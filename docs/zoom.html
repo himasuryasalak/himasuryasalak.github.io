@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+	    <style>
+		html {
+    display: table;
+    margin: auto;
+}
+
+body {
+    padding: 20px;
+    display: table-cell;
+    vertical-align: middle;
+	}
+
+	th, td {
+    padding: 3px;
+	text-align: left; 
+    vertical-align: middle;	
+	}
+</style>
+  </head>
+  <body style="max-width:500px">
+  <h1 style="text-align:center">SALAK 4.0</h1>
+  <h3 style="text-align:center">Portal Bayar</h3>
+  <br>
+  <h4 style="text-align:center">Nominal</h4>
+  <ul>
+    <li>Uang Kontrakan : Rp6.000.000</li>
+    <li>Uang Sampah : Rp25.000/Bulan (mulai September 2020)</li>
+  </ul>
+
+  <div id="metode_bayar" style="display:none">
+  <h4 style="text-align:center">Pilihan Metode Pembayaran</h4>
+  <h5>Rekening Bank</h5>
+  <ul>
+  <li><span id="bank">BNI 0753955396 a/n Mohammad Nur Rizki 
+  <button style="font-size:75%" type="button"onclick="salin('No.Rek BNI','0753955396')" class="btn btn-secondary">copy</button></span>
+  </li>
+  </ul>
+  <h5>Virtual Account</h5>
+  <ul>
+  <li><span id="VA1">CIMB Niaga VA : 230950000000014758 a/n Mohammad Nur Rizki
+  <button style="font-size:75%" type="button"onclick="salin('No.Virtual Account CIMB Niaga','230950000000014758')" class="btn btn-secondary">copy</button></span>
+  </li>
+  <li><span id="VA2">BANK PERMATA VA : 8330500000014758 a/n Mohammad Nur Rizki
+  <button style="font-size:75%" type="button"onclick="salin('No.Virtual Account Bank Permata','8330500000014758')" class="btn btn-secondary">copy</button></span>
+  </li>
+  <li><span id="VA3">BCA VA : 103005000000014758 a/n Mohammad Nur Rizki
+  <button style="font-size:75%" type="button"onclick="salin('No.Virtual Account BCA','103005000000014758')" class="btn btn-secondary">copy</button></span>
+  </li>
+  <li><span id="VA4">BRI VA : 100535000000014755 a/n Mohammad Nur Rizki
+  <button style="font-size:75%" type="button"onclick="salin('No.Virtual Account BRI','100535000000014755')" class="btn btn-secondary">copy</button></span>
+  </li>
+  <li><span id="VA5">BANK MANDIRI VA : 8932550000014755 a/n Mohammad Nur Rizki
+  <button style="font-size:75%" type="button"onclick="salin('No.Virtual Account Bank Mandiri','8932550000014755')" class="btn btn-secondary">copy</button></span>
+  </li>
+  </ul>
+  </div>
+  <br>
+  <form class="needs-validation" novalidate >
+  <div class="mb-3">
+  <h4 style="text-align:center">Pemesanan</h4>
+  <table style="width:100%">
+  <tr>
+    <td style="width:50px">Nama</td>
+    <td>:</td>
+	<td><input id="nama" type="text" class="form-control" id="exampleFormControlInput1" placeholder="masukkan nama"></td>
+  </tr>
+  <tr>
+    <td>Email</td>
+    <td>:</td>
+	<td><input id="email" type="email" class="form-control" id="exampleFormControlInput1" placeholder="masukkan email"></td>
+  </tr>
+  <tr>
+    <td rowspan="2">Pesanan Zoom</td>
+    <td rowspan="2">:</td>
+	<td>
+    <div class="form-check">
+		<input class="form-check-input" type="radio" name="flexRadioDefault" id="perjam" onclick="pilihVA()">
+		<label class="form-check-label" for="perjam">
+		Per Jam
+		</label>
+	</div></td>
+    </tr>
+    <tr><td>
+	<div class="form-check">
+		<input class="form-check-input" type="radio" name="flexRadioDefault" id="harian" onclick="pilihVA()">
+		<label class="form-check-label" for="harian">
+		Harian
+		</label>
+	</div></td>
+  </tr>
+  
+  
+  <tr>
+    <td style="width:50px">Nama Meeting</td>
+    <td>:</td>
+	<td><input id="meeting" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Contoh : Zoom Meeting"></td>
+  </tr>
+  <tr>
+    <td style="width:50px">Deskripsi (opsional)</td>
+    <td>:</td>
+	<td><textarea class="form-control" id="desc" rows="2"></textarea></td>
+  </tr>
+  <tr>
+	<td style="width:50px">Tanggal</td>
+    <td>:</td>
+	<td><input id="tgl" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Format : yyyy-MM-dd"></td>
+  </tr>
+  <tr>
+    <td>Jam</td>
+    <td>:</td>
+	<td><select class="form-select" aria-describedby="inputGroupPrepend" id="jam" style="width:80px">
+  <option value="00:00:00" selected>00:00</option>
+  <option value="01:00:00">01:00</option>
+  <option value="02:00:00">02:00</option>
+  <option value="03:00:00">03:00</option>
+  <option value="04:00:00">04:00</option>
+  <option value="05:00:00">05:00</option>
+  <option value="06:00:00">06:00</option>
+  <option value="07:00:00">07:00</option>
+  <option value="08:00:00">08:00</option>
+  <option value="09:00:00">09:00</option>
+  <option value="10:00:00">10:00</option>
+  <option value="11:00:00">11:00</option>
+  <option value="12:00:00">12:00</option>
+  <option value="13:00:00">13:00</option>
+  <option value="14:00:00">14:00</option>
+  <option value="15:00:00">15:00</option>
+  <option value="16:00:00">16:00</option>
+  <option value="17:00:00">17:00</option>
+  <option value="18:00:00">18:00</option>
+  <option value="19:00:00">19:00</option>
+  <option value="20:00:00">20:00</option>
+  <option value="21:00:00">21:00</option>
+  <option value="22:00:00">22:00</option>
+  <option value="23:00:00">23:00</option>
+  </select>
+  </td>
+  </tr>
+  <tr>
+    <td>Durasi</td>
+    <td>:</td>
+	<td><select class="form-select" aria-describedby="inputGroupPrepend" id="durasi" style="width:100px">
+  <option selected>1 Jam</option>
+  <option>2 Jam</option>
+  <option>3 Jam</option>
+  <option>4 Jam</option>
+  <option>5 Jam</option>
+  <option>6 Jam</option>
+  <option>7 Jam</option>
+  <option>8 Jam</option>
+  <option>9 Jam</option>
+  <option>10 Jam</option>
+  <option>11 Jam</option>
+  <option>12 Jam</option>
+  <option>13 Jam</option>
+  <option>14 Jam</option>
+  <option>15 Jam</option>
+  </select>
+  </td>
+  </tr>
+  <tr>
+	<td>Password</td>
+    <td>:</td>
+	<td><input id="pass" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Kosongi jika tidak perlu"></td>
+  </tr>
+  <tr>
+	<td>Fitur Tambahan (Gratis)</td>
+    <td>:</td>
+	<td>
+	<div class="form-check">
+		<input class="form-check-input" type="checkbox" name="flexRadioDefault" id="cohost" checked>
+		<label class="form-check-label" for="cohost">
+		Co-Host
+		</label>
+	</div>
+    <div class="form-check">
+		<input class="form-check-input" type="checkbox" name="flexRadioDefault" id="breakout">
+		<label class="form-check-label" for="breakout">
+		Breakout Room
+		</label>
+	</div>
+	<div class="form-check">
+		<input class="form-check-input" type="checkbox" name="flexRadioDefault" id="poll">
+		<label class="form-check-label" for="poll">
+		Polling
+		</label>
+	</div>
+	<div class="form-check">
+		<input class="form-check-input" type="checkbox" name="flexRadioDefault" id="live">
+		<label class="form-check-label" for="live">
+		Live streaming
+		</label>
+	</div>
+	<div class="form-check">
+		<input class="form-check-input" type="checkbox" name="flexRadioDefault" id="custom">
+		<label class="form-check-label" for="custom">
+		Customized Waiting Room
+		</label>
+	</div></td>
+    </tr>
+</table>
+<br>
+  <table align="center">
+  <tr>
+<td>
+<div id="tombol" align="center">
+<button type="button" id="btnnext"onclick="next()" class="btn btn-primary">Order</button>
+</div>
+<div id="loadnext" align="center" style="display : none;">
+<button class="btn btn-primary" type="button" disabled>
+  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+  Loading...
+</button>
+</div>
+</td>
+</tr>
+  <tr>
+  <td>
+<div id="tombol" align="center">
+<button type="button" id="btnsts"onclick="cekstatus()" class="btn btn-secondary">Cek Status Pembayaran</button>
+</div>
+<div id="loadsts" align="center" style="display : none;">
+<button class="btn btn-secondary" type="button" disabled>
+  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+  Loading...
+</button>
+</div>
+</td>
+</tr>
+</table>
+<br>
+</div>
+</form>
+<script>
+var elem = document.getElementById("num");
+
+elem.addEventListener("keydown",function(event){
+    var key = event.which;
+    if((key<48 || key>57) && key != 8) event.preventDefault();
+});
+
+elem.addEventListener("keyup",function(event){
+    var value = this.value.replace(/,/g,"");
+    this.dataset.currentValue=parseInt(value);
+    var caret = value.length-1;
+    while((caret-3)>-1)
+    {
+        caret -= 3;
+        value = value.split('');
+        value.splice(caret+1,0,",");
+        value = value.join('');
+    }
+    this.value = value;
+});
+function showValue()
+{
+  console.log(document.getElementById("num").dataset.currentValue);
+}
+
+function saveFile(f) {
+document.getElementById("file").style.display = "none";
+document.getElementById("upload").style.display = "block";
+    const file = f.files[0];
+    const fr = new FileReader();
+    fr.onload = function(e) {
+      const obj = {
+        filename: file.name,
+        mimeType: file.type,
+        bytes: [...new Int8Array(e.target.result)]
+      };
+      var nama = document.getElementById("nama").value
+      google.script.run.withSuccessHandler(suksesUpload).saveFile(obj, nama);
+    };
+    fr.readAsArrayBuffer(file);
+}
+function suksesUpload(e){
+console.log(e);
+document.getElementById("upload").style.display = "none";
+document.getElementById("suksesupload").style.display = "block";
+}
+function notifemail(){
+if (document.getElementById("centangemail").checked == true){
+  document.getElementById("email").style.display = "block"
+}
+else {
+  document.getElementById("email").style.display = "none"
+}
+}
+function next() {
+  if (document.getElementById("Rek").checked+document.getElementById("VA").checked == 0 || document.getElementById("nama").value == "kosong" || document.getElementById("num").value == ""){
+  alert("Durung mbok isi kabeh he, isien sek")
+  }
+  else if ((document.getElementById("VA").checked == true && document.getElementById("pilihanVA").value == "kosong") || (document.getElementById("centangemail").checked == true && document.getElementById("email").value == "")){
+  alert("Durung mbok isi kabeh he, isien sek")
+  }
+  else {
+  document.getElementById("btnnext").style.display = "none";
+  document.getElementById("loadnext").style.display = "block";
+  document.getElementById("btnnext").disabled = true;
+  
+  var nama = document.getElementById("nama").value;
+  var email = document.getElementById("email").value;
+  var bayar = document.getElementById("bayar").value
+  if (document.getElementById("perjam").checked == true){
+  var tipe = "Per Jam" ;
+  var durasi = document.getElementById("durasi").value ; 
+  }
+  else {
+  var tipe = "Harian";
+  var durasi = ""
+  }
+  var deskripsi = document.getElementById("desc").value
+  var tgl = document.getElementById("tgl").value
+  
+  else {metode = document.getElementById("pilihanVA").value}
+  google.script.run.withSuccessHandler(refreshApp).kirim(jeneng, bayar, metode, nominal, email)
+  }
+}
+function pilihVA(){
+if (document.getElementById("VA").checked == true) {
+document.getElementById("listVA").style.display = "table-row";
+document.getElementById("norek").innerHTML = ""
+if (document.getElementById("pilihanVA").value != "kosong") {
+  var index = document.getElementById("pilihanVA").selectedIndex
+  document.getElementById("norek").innerHTML = "<div align='center'>"+document.getElementById("VA"+index).innerHTML+"</div>"
+}
+}
+else {
+  document.getElementById("listVA").style.display = "none"
+  document.getElementById("norek").innerHTML = "<div align='center'>"+document.getElementById("bank").innerHTML+"</div>"
+}
+
+}
+function pembayaran(){
+if (document.getElementById("bayar").value == "Iuran") {
+  document.getElementById("num").value = "25,000"
+  document.getElementById("num").dataset.currentValue = 25000
+  document.getElementById("num").disabled = true
+  document.getElementById("kekurangan").style.display = "none"
+}
+else if (document.getElementById("bayar").value == "Kontrakan") {
+  document.getElementById("num").value = ""
+  document.getElementById("num").disabled = false;
+  if (document.getElementById("nama").value != "kosong" ) {
+    var nama = document.getElementById("nama").value
+    google.script.run.withSuccessHandler(kontrakan).cekKontrakan(nama)
+    document.getElementById("kurang").innerHTML = "..."
+    document.getElementById("kekurangan").style.display = "table-row"
+  }
+  else {
+    document.getElementById("kekurangan").style.display = "none"
+  }
+}
+}
+function kontrakan(berapa){
+document.getElementById("kurang").innerHTML = "Rp"+berapa;
+}
+function cekstatus() {
+document.getElementById("btnsts").style.display = "none";
+document.getElementById("loadsts").style.display = "block";
+document.getElementById("btnnext").disabled = true;
+google.script.run.withSuccessHandler(refreshApp).pindah("status_menu")
+}
+function salin(apa, metode) {
+var el = document.createElement('textarea');
+  el.value = metode;
+  document.body.appendChild(el);
+  el.select();
+  document.execCommand('copy');
+  document.body.removeChild(el);
+  alert(apa+" disalin");
+}
+function addSeparatorsNF(nStr, inD, outD, sep)
+{
+	nStr += '';
+	var dpos = nStr.indexOf(inD);
+	var nStrEnd = '';
+	if (dpos != -1) {
+		nStrEnd = outD + nStr.substring(dpos + 1, nStr.length);
+		nStr = nStr.substring(0, dpos);
+	}
+	var rgx = /(\d+)(\d{3})/;
+	while (rgx.test(nStr)) {
+		nStr = nStr.replace(rgx, '$1' + sep + '$2');
+	}
+	return nStr + nStrEnd;
+}
+function refreshApp(newHtml) {
+    document.open();
+    document.write(newHtml)
+    document.close();
+  }
+document.addEventListener("DOMContentLoaded", fungsi);
+</script>
+  </body>
+</html>
