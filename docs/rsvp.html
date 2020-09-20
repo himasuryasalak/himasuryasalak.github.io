@@ -63,11 +63,11 @@ body {
         </button>
       </div>
       <div class="modal-body">
-        Apakah anda ingin membatalkan kehadiran anda?
+        Apakah anda yakin ingin membatalkan kehadiran anda?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
-        <button type="button" data-dismiss="modal" onclick="next()" class="btn btn-primary">Ya</button>
+        <button type="button" data-dismiss="modal" onclick="batalhadir()" class="btn btn-primary">Ya, saya yakin</button>
       </div>
     </div>
   </div>
@@ -99,8 +99,8 @@ body {
 	</div>
 	</td>
 <td>
-<button type="button" id="btns2"onclick="ceknomor()" class="btn btn-secondary">Batalkan kehadiran</button>
-<button id="loadss2" class="btn btn-secondary" type="button" style="display : none;" disabled>
+<button type="button" id="btnbatal" class="btn btn-secondary" style="display:none" data-toggle="modal" data-target="#modalbatal" >Batalkan kehadiran</button>
+<button id="loadbatal" class="btn btn-secondary" type="button" style="display : none;" disabled>
   <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
   Loading...
 </button>
@@ -124,8 +124,8 @@ body {
   <tr>
   <td>
 <div id="tombol" align="center">
-<button type="button" id="btnceknomor"onclick="ceknomor()" class="btn btn-primary">Next</button>
-<button type="button" id="btnnext"onclick="next()" class="btn btn-primary" style="display:none">Next</button>
+<button type="button" id="btnceknomor"onclick="ceknomor()" class="btn btn-primary">Next1</button>
+<button type="button" id="btnnext"onclick="next()" class="btn btn-primary">Next</button>
 <button type="button" id="btnsubmit"onclick="submit()" class="btn btn-primary" style="display:none">Submit</button>
 </div>
 <button id="load" class="btn btn-primary" type="button" style="display : none;" disabled>
@@ -138,13 +138,6 @@ body {
 <td>
 <button type="button" id="btns1"onclick="ceknomor()" class="btn btn-secondary">Ubah Data</button>
 <button id="loads1" class="btn btn-secondary" type="button" style="display : none;" disabled>
-  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-  Loading...
-</button>
-</td>
-<td>
-<button type="button" id="btns2"onclick="ceknomor()" class="btn btn-secondary">Batalkan kehadiran</button>
-<button id="loadss2" class="btn btn-secondary" type="button" style="display : none;" disabled>
   <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
   Loading...
 </button>
@@ -194,6 +187,14 @@ alert("next")
   google.script.run.withSuccessHandler(showupload).cari(jeneng)
   }
 }
+function batalhadir() {
+document.getElementById("btnbatal").style.display = "none";
+document.getElementById("loadbatal").style.display = "block";
+localStorage.removeItem("nama")
+localStorage.removeItem("wa")
+localStorage.removeItem("rsvp")
+location.reload();
+}
 function back() {
   alert("AA")
   jQuery(function($) {
@@ -219,6 +220,7 @@ document.getElementById("upload").style.display = "block"
 }
 function awal() {
 if (localStorage.getItem("nama") != null){
+document.getElementById("btnbatal").style.display = "block"
 document.getElementById("nama").value = localStorage.getItem("nama")
 document.getElementById("wa").value = localStorage.getItem("wa")
 var rsvp = localStorage.getItem("rsvp")
@@ -257,5 +259,6 @@ document.getElementById("btnUlang").addEventListener("click",tombol);
 </script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
   </body>
 </html>
