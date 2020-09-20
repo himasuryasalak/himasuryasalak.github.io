@@ -87,17 +87,24 @@ body {
 <div class="form-check">
 		<input class="form-check-input" type="radio" name="flexRadioDefault" id="hadir" onclick="pilihan()">
 		<label class="form-check-label" for="hadir">
-		Ya
+		Hadir
 		</label>
 	</div></td>
 <td>
 	<div class="form-check">
 		<input class="form-check-input" type="radio" name="flexRadioDefault" id="gakhadir" onclick="pilihan()">
 		<label class="form-check-label" for="gakhadir">
-		Tidak
+		Tidak hadir
 		</label>
 	</div>
-	</td></tr></table>
+	</td>
+<td>
+<button type="button" id="btns2"onclick="ceknomor()" class="btn btn-secondary">Batalkan kehadiran</button>
+<button id="loadss2" class="btn btn-secondary" type="button" style="display : none;" disabled>
+  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+  Loading...
+</button>
+</td></tr></table>
 </div>
 <br>
 <div id="jikahadir" style="display:none">
