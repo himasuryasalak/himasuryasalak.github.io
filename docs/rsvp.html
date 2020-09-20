@@ -1,264 +1,41 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Salak 4.0</title>
+<head>
+<title>Salak 4.0</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta version="v.1.0.1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
-	    <style>
-		html {
-    display: table;
-    margin: auto;
-}
+<style type="text/css"> 
+        html { 
+            overflow: auto; 
+        } 
+          
+        html, 
+        body, 
+        div, 
+        iframe { 
+            margin: 0px; 
+            padding: 0px; 
+            height: 100%; 
+            border: none; 
+        } 
+          
+        iframe { 
+            display: block; 
+            width: 100%; 
+            border: none; 
+            overflow-y: auto; 
+            overflow-x: hidden; 
+        } 
+    </style>
+	</head>
+<body>
+<iframe src="https://script.google.com/macros/s/AKfycbzvA7CJcXQtf76ePw2zMi9yI7Q5yWwIDStaU_WR/exec?action=test"
+    frameborder="0" 
+    marginheight="0" 
+    marginwidth="0" 
+    width="100%" 
+    height="100%" 
+    scrolling="auto"></iframe >
 
-body {
-    display: table-cell;
-    vertical-align: middle;
-	width: 500px;
-	padding: 20px;
-	}
-
-	th, td {
-    padding: 3px;
-	padding-left: 10px;
-	text-align: left; 
-    vertical-align: middle;	
-	}
-</style>
-  </head>
-  <body style="max-width:500px">
-  <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" id="myBtn">
-  Launch static backdrop modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="myModal" role="dialog" data-backdrop="static" data-keyboard="false" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered" >
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Konfirmasi RSVP</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Apakah data yang dimasukkan sudah benar
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
-        <button type="button" data-dismiss="modal" onclick="next()" class="btn btn-primary">Ya</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Modal -->
-<div class="modal fade" id="modalbatal" role="dialog" data-backdrop="static" data-keyboard="false" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered" >
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Konfirmasi Pembatalan Kehadiran</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Apakah anda yakin ingin membatalkan kehadiran anda?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
-        <button type="button" data-dismiss="modal" onclick="batalhadir()" class="btn btn-primary">Ya, saya yakin</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<h1 style="text-align:center">Himasurya Farewell 2020</h1>
-  <h3 style="text-align:center">RSVP</h3>
-  <br>
-<span><h6>Nama Lengkap</h6></span>
-<input id="nama" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Contoh : Zoom Meeting"><br>
-<h6>Nomor <i>Whatsapp</i></h6>
-<input id="wa" type="number" class="form-control" id="exampleFormControlInput1" placeholder="Contoh : 0811113535"><br>
-<h6>Bersedia hadir Farewell</h6>
-<table>
-<tr>
-<td>
-<div class="form-check">
-		<input class="form-check-input" type="radio" name="flexRadioDefault" id="hadir" onclick="pilihan()">
-		<label class="form-check-label" for="hadir">
-		Hadir
-		</label>
-	</div></td>
-<td>
-	<div class="form-check">
-		<input class="form-check-input" type="radio" name="flexRadioDefault" id="gakhadir" onclick="pilihan()">
-		<label class="form-check-label" for="gakhadir">
-		Tidak hadir
-		</label>
-	</div>
-	</td>
-<td>
-<button type="button" id="btnbatal" class="btn btn-secondary" style="display:none" data-toggle="modal" data-target="#modalbatal" >Batalkan kehadiran</button>
-<button id="loadbatal" class="btn btn-secondary" type="button" style="display : none;" disabled>
-  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-  Loading...
-</button>
-</td></tr></table>
-</div>
-<br>
-<div id="jikahadir" style="display:none">
-<h6>Email</h6>
-<input id="email" type="email" class="form-control" id="exampleFormControlInput1" placeholder="Contoh : sopojarwo@gmail.com"><br>
-<h6 id="geeks">Deskripsi :</h6><?= desc ?><br><br>
-<h6>Tanggal :</h6><?= tgl ?><br><br>
-<h6>Jam :</h6><?= jam ?><br><br>
-<h6>Durasi :</h6><?= durasi ?><br><br>
-<h6>Password :</h6><?= pass ?><br><br>
- </div>
- 
- <div id="uploadbukti">
- </div>
- 
-  <table align="center">
-  <tr>
-  <td>
-<div id="tombol" align="center">
-<button type="button" id="btnceknomor"onclick="ceknomor()" class="btn btn-primary">Next1</button>
-<button type="button" id="btnnext"onclick="next()" class="btn btn-primary">Next</button>
-<button type="button" id="btnsubmit"onclick="submit()" class="btn btn-primary" style="display:none">Submit</button>
-</div>
-<button id="load" class="btn btn-primary" type="button" style="display : none;" disabled>
-  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-  Loading...
-</button>
-</div>
-</td>
-<div id="tombolsecond" align="center">
-<td>
-<button type="button" id="btns1"onclick="ceknomor()" class="btn btn-secondary">Ubah Data</button>
-<button id="loads1" class="btn btn-secondary" type="button" style="display : none;" disabled>
-  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-  Loading...
-</button>
-</td>
-</tr>
-</table>
-<script>
-function konversinomor(str){
-  var res = str.slice(0,1);
-  var res2 = str.slice(1,str.length);
-  res = res.replace("0","62")
-  str = res+res2
-  return str
-  }
-function balikinnomor(str){
-  var res = str.slice(0,2);
-  var res2 = str.slice(2,str.length);
-  res = res.replace("62","0")
-  str = res+res2
-  return str
-  }
-function pilihan(){
-if (document.getElementById("hadir").checked) {
-document.getElementById("jikahadir").style.display = "block";
-}
-else {document.getElementById("jikahadir").style.display = "none"}
-}
-
-function next() {
-localStorage.setItem("nama", document.getElementById("nama").value);
-localStorage.setItem("wa", document.getElementById("wa").value);
-if (document.getElementById("hadir").checked){localStorage.setItem("rsvp","hadir")}
-else {localStorage.setItem("rsvp","gakhadir")}
-kunci()
-alert("next")
-  if (document.getElementById("ceknama").checked == true && (document.getElementById("nama").value == "kosong" || document.getElementById("bayar").value == "kosong")){
-  alert("Durung mbok isi kabeh he, isien sek")
-  }
-  else if (document.getElementById("cekIDtrx").checked == true && document.getElementById("ID").value == "") {
-  alert("Durung mbok isi kabeh he, isien sek")
-  }
-  else {
-  document.getElementById("btnnext").style.display = "none";
-  document.getElementById("loadnext").style.display = "block";
-  document.getElementById("btnprev").disabled = true;
-  var jeneng = document.getElementById("nama").value;
-  google.script.run.withSuccessHandler(showupload).cari(jeneng)
-  }
-}
-function batalhadir() {
-document.getElementById("btnbatal").style.display = "none";
-document.getElementById("loadbatal").style.display = "block";
-localStorage.removeItem("nama")
-localStorage.removeItem("wa")
-localStorage.removeItem("rsvp")
-location.reload();
-}
-function back() {
-  alert("AA")
-  jQuery(function($) {
-        $("#myModal").modal();
-    }); 
-  document.getElementById("btnprev").style.display = "none";
-  document.getElementById("loadprev").style.display = "block";
-  document.getElementById("btnnext").disabled = true;
-  google.script.run.withSuccessHandler(refreshApp).pindah("awal")
-}
-
-function copy(apa, metode) {
-var el = document.createElement('textarea');
-  el.value = metode;
-  document.body.appendChild(el);
-  el.select();
-  document.execCommand('copy');
-  document.body.removeChild(el);
-  alert(apa+" disalin");
-}
-function showupload() {
-document.getElementById("upload").style.display = "block"
-}
-function awal() {
-if (localStorage.getItem("nama") != null){
-document.getElementById("btnbatal").style.display = "block"
-document.getElementById("nama").value = localStorage.getItem("nama")
-document.getElementById("wa").value = localStorage.getItem("wa")
-var rsvp = localStorage.getItem("rsvp")
-document.getElementById(rsvp).checked = true
-kunci()
-showupload()
-}
-}
-function kunci(){
-document.getElementById("nama").disabled = true
-document.getElementById("wa").disabled = true
-document.getElementById("hadir").disabled = true
-document.getElementById("gakhadir").disabled = true
-}
-function submit(){
-}
-function cekmelalui(apa) {
-if ( apa == "nama" ){
-  document.getElementById("cariIDtrx").style.display = "none";
-  document.getElementById("carinama").style.display = "block";
-  document.getElementById("btnnext").disabled=false
-}
-else {
-  document.getElementById("cariIDtrx").style.display = "block";
-  document.getElementById("carinama").style.display = "none";
-  document.getElementById("btnnext").disabled=false
-}
-}
-function refreshApp(newHtml) {
-    document.open();
-    document.write(newHtml)
-    document.close();
-  }
-document.addEventListener("DOMContentLoaded", awal);
-document.getElementById("btnUlang").addEventListener("click",tombol);
-</script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
-  </body>
+</body>
 </html>
