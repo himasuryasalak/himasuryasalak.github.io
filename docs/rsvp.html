@@ -99,7 +99,8 @@ body {
   <tr>
   <td>
 <div id="tombol" align="center">
-<button type="button" id="btnnext"onclick="next()" class="btn btn-primary">Selanjutnya</button>
+<button type="button" id="btnceknomor"onclick="ceknomor()" class="btn btn-primary">Next</button>
+<button type="button" id="btnnext"onclick="next()" class="btn btn-primary" style="display:none">Next</button>
 <button type="button" id="btnsubmit"onclick="submit()" class="btn btn-primary" style="display:none">Submit</button>
 </div>
 <button id="load" class="btn btn-primary" type="button" style="display : none;" disabled>
@@ -191,6 +192,8 @@ document.getElementById("nama").disabled = true
 document.getElementById("wa").disabled = true
 document.getElementById("hadir").disabled = true
 document.getElementById("gakhadir").disabled = true
+}
+function submit(){
 }
 function cekmelalui(apa) {
 if ( apa == "nama" ){
