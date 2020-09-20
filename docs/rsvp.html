@@ -33,8 +33,8 @@ body {
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" role="dialog">
-  <div class="modal-dialog">
+<div class="modal fade" id="myModal" role="dialog" data-backdrop="static" data-keyboard="false" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered" >
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="staticBackdropLabel">Konfirmasi RSVP</h5>
@@ -52,8 +52,29 @@ body {
     </div>
   </div>
 </div>
-<h1 style="text-align:center">SALAK 4.0</h1>
-  <h3 style="text-align:center">Status Pembayaran</h3>
+<!-- Modal -->
+<div class="modal fade" id="modalbatal" role="dialog" data-backdrop="static" data-keyboard="false" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered" >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Konfirmasi Pembatalan Kehadiran</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Apakah anda ingin membatalkan kehadiran anda?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
+        <button type="button" data-dismiss="modal" onclick="next()" class="btn btn-primary">Ya</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h1 style="text-align:center">Himasurya Farewell 2020</h1>
+  <h3 style="text-align:center">RSVP</h3>
   <br>
 <span><h6>Nama Lengkap</h6></span>
 <input id="nama" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Contoh : Zoom Meeting"><br>
@@ -105,6 +126,21 @@ body {
   Loading...
 </button>
 </div>
+</td>
+<div id="tombolsecond" align="center">
+<td>
+<button type="button" id="btns1"onclick="ceknomor()" class="btn btn-secondary">Ubah Data</button>
+<button id="loads1" class="btn btn-secondary" type="button" style="display : none;" disabled>
+  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+  Loading...
+</button>
+</td>
+<td>
+<button type="button" id="btns2"onclick="ceknomor()" class="btn btn-secondary">Batalkan kehadiran</button>
+<button id="loadss2" class="btn btn-secondary" type="button" style="display : none;" disabled>
+  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+  Loading...
+</button>
 </td>
 </tr>
 </table>
