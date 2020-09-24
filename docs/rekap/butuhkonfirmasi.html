@@ -27,9 +27,39 @@
             overflow-y: auto; 
             overflow-x: hidden; 
         } 
+.dropdown-item:focus{background-color: #c2a259}
+.dropdown-item:active{background-color: #dbad42}
+.dropdown-item.active {background-color: #f5bc38}
     </style>
 	</head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #dbad42;">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="https://drive.google.com/uc?id=1zJuCynmVz0Un9bBuT1bao8HRwivegFK7" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+      Himasurya PKN STAN
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="#">Home</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false">
+            Farewell Himasurya 2020
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item" href="https://himasuryasalak.github.io/rekap/">Rekap</a></li>
+            <li><a class="dropdown-item active" href='https://himasuryasalak.github.io/rekap/butuhkonfirmasi'>Pembayaran</a></li>
+            <li><a class="dropdown-item" href="https://script.google.com/macros/s/AKfycbzvA7CJcXQtf76ePw2zMi9yI7Q5yWwIDStaU_WR/exec?action=" aria-disabled="true">Kehadiran</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 <iframe src="https://script.google.com/macros/s/AKfycbzvA7CJcXQtf76ePw2zMi9yI7Q5yWwIDStaU_WR/exec?action=butuhkonfirmasi"
     frameborder="0" 
     marginheight="0" 
