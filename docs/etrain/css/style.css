@@ -560,6 +560,11 @@ ul {
     padding: 10px 30px;
     margin-top: 25px;
   }
+  .btn_1.full {
+    padding: 10px 30px;
+    margin-top: 25px;
+	width: 100%
+  }
 }
 
 @media only screen and (min-width: 576px) and (max-width: 767px) {
@@ -568,6 +573,11 @@ ul {
     padding: 10px 30px;
     margin-top: 30px;
   }
+  .btn_1.full {
+    padding: 10px 30px;
+    margin-top: 30px;
+	width: 100%
+  }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -575,6 +585,11 @@ ul {
   .btn_1 {
     padding: 10px 30px;
     margin-top: 30px;
+  }
+  .btn_1.full {
+    padding: 10px 30px;
+    margin-top: 30px;
+	width: 100%
   }
 }
 
